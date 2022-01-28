@@ -18,9 +18,18 @@ class ImageDownload: Operation {
     }
     
     override func main() {
+        if isCancelled {
+            print("Descarga cancelada (1)")
+            return
+        }
         do {
-           
             let data = try Data(contentsOf: url)
+            sleep(3)
+            if isCancelled {
+                print("Descarga cancelada (2)")
+                return
+            }
+            
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: data)
             }

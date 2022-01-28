@@ -30,6 +30,12 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func goNextScreen(_ sender: UIButton) {
+        queue?.cancelAllOperations()
+        
+        self.performSegue(withIdentifier: "goGreenScreen", sender: nil)
+    }
+    
     @IBAction func download(_ sender: UIButton) {
         let download = ImageDownload(url: "https://data.1freewallpapers.com/detail/gray-mountains-and-calm-body-of-water-near-mountain-during-daytime-with-reflection-nature.jpg", imageView: imageView)
         queue?.addOperation(download)
